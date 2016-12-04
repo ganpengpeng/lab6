@@ -111,7 +111,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="QUEUE.cpp" />
-    <ClCompile Include="source.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="STACK.cpp" />
   </ItemGroup>
   <ItemGroup>

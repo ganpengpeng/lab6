@@ -1,53 +1,56 @@
 #include "queue.h"
 
-QUEUE::QUEUE(int m) : s2(m)
+QUEUE::QUEUE(int m) : STACK(m), s2(m)
 {
 	cout << "queue construct" << endl;
 }
 
-QUEUE::QUEUE(const QUEUE& s) : s2(s.s2)
+QUEUE::QUEUE(const QUEUE& s) : STACK(s), s2(s.s2)
 {
 	cout << "queue copy construct" << endl;
 }
 
 QUEUE::operator int() const
 {
-	return s1.getp() + s2.getp();
+	return STACK::operator int() + int(s2);
 }
 
 QUEUE& QUEUE::operator<<(int e)
 {
-	if (s1.getp() >= s1.getm() && s2.getp() == 0)
+	if (STACK::operator int() >= size() && int(s2) == 0)
 	{
-		while (s1.getp() != 0)
+		while (STACK::operator int() != 0)
 		{
 			int x;
-			s1 >> x;
+			STACK::operator >> (x);
 			s2 << x;
 		}
 	}
-	s1.getp() >= s1.getm() ? 0 : s1 << e;
+	if(STACK::operator int() < size())
+		STACK::operator  << (e);
 	return *this;
 }
 
 QUEUE& QUEUE::operator >> (int& e)
 {
-	if (s1.getp() != 0 && s2.getp() == 0)
+	if (STACK::operator int() != 0 && int(s2) == 0)
 	{
-		while (s1.getp() != 0)
+		while (STACK::operator int() != 0)
 		{
 			int x;
-			s1 >> x;
+			STACK::operator >> (x);
 			s2 << x;
 		}
 	}
-	s2.getp() > 0 ? s2 >> e : 0;
+	if (s2 > 0)
+		s2 >> e;
+	//int(s2) > 0 ? s2 >> e : 0;
 	return *this;
 }
 
 QUEUE& QUEUE::operator=(const QUEUE& s)
 {
-	s1 = s.s1;
+	STACK::operator=(s);
 	s2 = s.s2;
 	return *this;
 }
@@ -55,13 +58,13 @@ QUEUE& QUEUE::operator=(const QUEUE& s)
 void QUEUE::print() const
 {
 	STACK temp = s2;
-	for (int i = temp.getp(); i != 0; --i)
+	for (int i = int(temp); i != 0; --i)
 	{
 		int x;
 		temp >> x;
 		cout << x << ' ';
 	}
-	s1.print();
+	STACK::print();
 	cout << endl;
 }
 

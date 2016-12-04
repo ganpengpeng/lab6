@@ -15,13 +15,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="STACK.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="QUEUE.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -30,7 +30,7 @@
       <Filter>源文件</Filter>
     </ClInclude>
     <ClInclude Include="QUEUE.h">
-      <Filter>头文件</Filter>
+      <Filter>源文件</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -37,8 +37,6 @@ public:
 	virtual STACK& operator<<(int e); 	//将e入栈,并返回栈
 	virtual STACK& operator >> (int &e);	//出栈到e,并返回栈
 	virtual void print() const;			//打印栈
-	int getp() const { return pos; }
-	int getm() const { return max; }
 protected:
 	int a;
 };
